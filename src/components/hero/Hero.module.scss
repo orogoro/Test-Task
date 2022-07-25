@@ -1,15 +1,52 @@
-.container {
-  width: 1170px;
-  margin: 0 auto;
-}
-
 .hero {
-  //   padding: 164px 0;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
   &_container {
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
+    align-items: center;
     width: 380px;
+  }
+
+  &_title {
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 40px;
+    color: #ffffff;
+    margin-bottom: 21px;
+  }
+
+  &_text {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    color: #ffffff;
+  }
+
+  &_button {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    padding: 4px 22px;
+    border: none;
+    width: 100px;
+    margin-top: 32px;
+
+    color: rgba(0, 0, 0, 0.87);
+    background: #f4e041;
+    border-radius: 80px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #ffe302;
+    }
+
+    &:disabled {
+      background-color: #b4b4b4;
+      color: rgba(255, 255, 255, 0.87);
+    }
   }
 }
 

@@ -30,9 +30,19 @@
   color: rgba(0, 0, 0, 0.87);
   background: #f4e041;
   border-radius: 80px;
+  cursor: pointer;
 
   &:last-child {
     margin-left: 10px;
     padding: 4px 22px 4px 23px;
+  }
+
+  &:hover {
+    background-color: #ffe302;
+  }
+
+  &:disabled {
+    background-color: #b4b4b4;
+    color: rgba(255, 255, 255, 0.87);
   }
 }
