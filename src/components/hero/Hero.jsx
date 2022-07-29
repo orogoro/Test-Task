@@ -14,9 +14,9 @@ function Hero() {
           mind. They should also be excited to learn, as the world of Front-End
           Development keeps evolving.
         </p>
-        <button className={styles.hero_button} type="button">
+        <a className={styles.hero_button} href="#form">
           Sign up
-        </button>
+        </a>
       </div>
     </div>
   );

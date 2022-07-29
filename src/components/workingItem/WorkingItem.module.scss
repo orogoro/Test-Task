@@ -1,0 +1,16 @@
+.card {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  color: rgba(0, 0, 0, 0.87);
+
+  &_photo {
+    width: 70px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+
+  &_text {
+    margin-bottom: 20px;
+  }
+}
