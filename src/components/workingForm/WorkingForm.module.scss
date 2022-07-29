@@ -4,7 +4,7 @@
     flex-direction: column;
     text-align: center;
     align-items: center;
-    margin: 140px 0;
+    margin: 140px 0 10px;
   }
 
   &_title {
@@ -18,13 +18,13 @@
   &_form {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
   }
 
   &_input__container {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
     position: relative;
 
     & + & {
@@ -89,8 +89,8 @@
 
   &_text {
     display: flex;
-    justify-content: start;
-    align-items: start;
+    justify-content: flex-start;
+    align-items: flex-start;
     text-align: left;
     margin-top: 25px;
     margin-bottom: 11px;

@@ -1,6 +1,11 @@
+import { animateScroll as scroll } from 'react-scroll';
+
 import styles from './Hero.module.scss';
 
 function Hero() {
+  const scrollToForm = () => {
+    scroll.scrollToBottom();
+  };
   return (
     <div className={styles.hero}>
       <div className={styles.hero_container}>
@@ -14,9 +19,9 @@ function Hero() {
           mind. They should also be excited to learn, as the world of Front-End
           Development keeps evolving.
         </p>
-        <a className={styles.hero_button} href="#form">
+        <button className={styles.hero_button} onClick={scrollToForm}>
           Sign up
-        </a>
+        </button>
       </div>
     </div>
   );

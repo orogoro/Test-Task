@@ -3,19 +3,9 @@ import axios from 'axios';
 axios.defaults.baseURL =
   'https://frontend-test-assignment-api.abz.agency/api/v1';
 
-// const token = {
-//   set(token) {
-//     axios.defaults.headers.common.Token = token;
-//   },
-//   // unset() {
-//   //   axios.defaults.headers.common.Authorization = '';
-//   // },
-// };
-
 async function getToken() {
   try {
     const { data } = await axios.get(`/token`);
-    // token.set(data.token);
     return data.token;
   } catch (error) {
     console.log(error);

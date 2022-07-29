@@ -1,21 +1,15 @@
-// import { animateScroll as scroll } from 'react-scroll';
-// import {
-//   Link,
-//   // Button,
-//   // Element,
-//   // Events,
-//   // animateScroll as scroll,
-//   // scrollSpy,
-//   // scroller,
-// } from 'react-scroll';
+import { animateScroll as scroll } from 'react-scroll';
 
 import logo from '../../images/icons/Logo.svg';
 
 import styles from './Header.module.scss';
 function Header() {
-  // const scrollBotom = () => {
-  //   scroll.scrollToBottom();
-  // };
+  const scrollToList = () => {
+    scroll.scrollTo(800);
+  };
+  const scrollToForm = () => {
+    scroll.scrollToBottom();
+  };
 
   return (
     <header className={styles.header}>
@@ -25,12 +19,12 @@ function Header() {
         </a>
 
         <div className={styles.btn_container}>
-          <a className={styles.button} href="#list">
+          <button className={styles.button} onClick={scrollToList}>
             Users
-          </a>
-          <a className={styles.button} href="#form">
+          </button>
+          <button className={styles.button} onClick={scrollToForm}>
             Sign up
-          </a>
+          </button>
         </div>
       </div>
     </header>
