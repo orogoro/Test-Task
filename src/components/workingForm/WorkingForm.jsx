@@ -4,6 +4,7 @@ import { Loader } from 'components';
 import { getToken } from 'axiosApi/axiosApi';
 
 import styles from './WorkingForm.module.scss';
+import { useEffect } from 'react';
 
 function WorkingForm({ positions, onSubmit, loading }) {
   const [name, setName] = useState('');
@@ -11,10 +12,9 @@ function WorkingForm({ positions, onSubmit, loading }) {
   const [phone, setPhone] = useState('');
   const [position, setPosition] = useState('');
   const [file, setFile] = useState('');
+  const [disable, setDisable] = useState(true);
 
   const handleSubmit = e => {
-    e.preventDefault();
-
     const fileField = document.querySelector('input[type="file"]');
 
     getToken().then(response => {
@@ -59,6 +59,12 @@ function WorkingForm({ positions, onSubmit, loading }) {
         return;
     }
   };
+
+  useEffect(() => {
+    if (name && email && phone && position && file) {
+      setDisable(false);
+    }
+  }, [email, file, name, phone, position]);
 
   return (
     <div className={styles.form_container} id="form">
@@ -117,6 +123,7 @@ function WorkingForm({ positions, onSubmit, loading }) {
               name="position"
               value={name}
               onChange={handleChange}
+              required
             />
             <span>{name}</span>
           </label>
@@ -130,6 +137,7 @@ function WorkingForm({ positions, onSubmit, loading }) {
               accept=".jpg, .jpeg, .png"
               value={file}
               onChange={handleChange}
+              required
             />
             <div className={styles.field__button}>Upload</div>
             <div className={styles.field__fake}>
@@ -139,7 +147,7 @@ function WorkingForm({ positions, onSubmit, loading }) {
         </div>
 
         {!loading ? (
-          <button className={styles.button} type="submit">
+          <button className={styles.button} type="submit" disabled={disable}>
             Sign up
           </button>
         ) : (
