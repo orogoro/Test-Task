@@ -1,18 +1,22 @@
 {
   "files": {
-    "main.css": "/react-homework-template/static/css/main.87860b1d.css",
-    "main.js": "/react-homework-template/static/js/main.ff89ca34.js",
+    "main.css": "/react-homework-template/static/css/main.90809fa8.css",
+    "main.js": "/react-homework-template/static/js/main.d1990ebb.js",
     "static/media/hero-1170x2-min.jpg": "/react-homework-template/static/media/hero-1170x2-min.af323eec3d3d6bfc523b.jpg",
+    "static/media/hero-768x2.jpg": "/react-homework-template/static/media/hero-768x2.00043bba40baf9790e7b.jpg",
+    "static/media/hero-360x2.jpg": "/react-homework-template/static/media/hero-360x2.7f5022cdb23f4fe773e3.jpg",
     "static/media/hero-1170-min.jpg": "/react-homework-template/static/media/hero-1170-min.9e3f1cae52ae0c7c514c.jpg",
+    "static/media/hero-768.jpg": "/react-homework-template/static/media/hero-768.87f0d480cde6b9af87c1.jpg",
+    "static/media/hero-360.jpg": "/react-homework-template/static/media/hero-360.a76b24879c032aebf27e.jpg",
     "static/media/success-image.svg": "/react-homework-template/static/media/success-image.75f9ca65a08853a2d2a40ad01df62230.svg",
     "static/media/Logo.svg": "/react-homework-template/static/media/Logo.dd85e2c3564015ba49cf361a96c65823.svg",
     "index.html": "/react-homework-template/index.html",
     "static/media/Ellipse.svg": "/react-homework-template/static/media/Ellipse.6f75dc4f9a17d8a8cc36.svg",
-    "main.87860b1d.css.map": "/react-homework-template/static/css/main.87860b1d.css.map",
-    "main.ff89ca34.js.map": "/react-homework-template/static/js/main.ff89ca34.js.map"
+    "main.90809fa8.css.map": "/react-homework-template/static/css/main.90809fa8.css.map",
+    "main.d1990ebb.js.map": "/react-homework-template/static/js/main.d1990ebb.js.map"
   },
   "entrypoints": [
-    "static/css/main.87860b1d.css",
-    "static/js/main.ff89ca34.js"
+    "static/css/main.90809fa8.css",
+    "static/js/main.d1990ebb.js"
   ]
 }
