@@ -1,63 +1,44 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
 
 import { Loader } from 'components';
 import { getToken } from 'axiosApi/axiosApi';
 
 import styles from './WorkingForm.module.scss';
-import { useEffect } from 'react';
 
 function WorkingForm({ positions, onSubmit, loading }) {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [position, setPosition] = useState('');
-  const [file, setFile] = useState('');
   const [disable, setDisable] = useState(true);
 
-  const handleSubmit = e => {
-    const fileField = document.querySelector('input[type="file"]');
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      file: [],
+      phone: '+380',
+    },
+  });
 
+  const file = watch('file')[0]?.name;
+  const name = watch('name');
+  const email = watch('email');
+  const phone = watch('phone');
+  const position = watch('position');
+
+  const handleSubmitForm = data => {
     getToken().then(response => {
       const config = { headers: { Token: response } };
-
       const formData = new FormData();
-      formData.append('name', name);
-      formData.append('email', email);
-      formData.append('phone', phone);
-      formData.append('position_id', position);
-      formData.append('photo', fileField.files[0]);
+      formData.append('name', data.name);
+      formData.append('email', data.email);
+      formData.append('phone', data.phone);
+      formData.append('position_id', data.position);
+      formData.append('photo', data.file[0]);
 
       onSubmit(formData, config);
     });
-  };
-
-  const handleChange = e => {
-    const { name, value, id } = e.target;
-
-    switch (name) {
-      case 'name':
-        setName(value);
-        break;
-
-      case 'email':
-        setEmail(value);
-        break;
-
-      case 'phone':
-        setPhone(value);
-        break;
-
-      case 'position':
-        setPosition(id);
-        break;
-
-      case 'file':
-        setFile(value);
-        break;
-
-      default:
-        return;
-    }
   };
 
   useEffect(() => {
@@ -69,61 +50,88 @@ function WorkingForm({ positions, onSubmit, loading }) {
   return (
     <div className={styles.form_container} id="form">
       <h2 className={styles.form_title}>Working with POST request</h2>
-      <form className={styles.form_form} onSubmit={handleSubmit}>
+      <form
+        className={styles.form_form}
+        onSubmit={handleSubmit(handleSubmitForm)}
+      >
         <div className={styles.form_input__container}>
           <input
-            className={styles.form_input}
+            className={errors.name ? styles.input_error : styles.form_input}
             type="text"
-            name="name"
+            {...register('name', {
+              required: 'This is required',
+              minLength: {
+                value: 2,
+                message: 'Min length is 2',
+              },
+              maxLength: {
+                value: 60,
+                message: 'Max length is 60',
+              },
+            })}
             placeholder="Your name"
-            minLength="2"
-            maxLength="60"
-            // pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$"
-            onChange={handleChange}
-            required
           />
           <label>Your name</label>
+          <p className={styles.error}>{errors.name?.message}</p>
         </div>
         <div className={styles.form_input__container}>
           <input
-            className={styles.form_input}
+            className={errors.email ? styles.input_error : styles.form_input}
             type="email"
-            name="email"
-            placeholder="Email"
-            minLength="2"
-            maxLength="100"
-            pattern="^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$"
-            // pattern="^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$"
-            onChange={handleChange}
-            required
+            {...register('email', {
+              required: 'This is required',
+              minLength: {
+                value: 2,
+                message: 'Min length is 2',
+              },
+              maxLength: {
+                value: 100,
+                message: 'Max length is 100',
+              },
+              pattern: {
+                value:
+                  /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/,
+                message: 'example@gmail.com',
+              },
+            })}
+            placeholder="Your email"
           />
           <label>Email</label>
+          <p className={styles.error}>{errors.email?.message}</p>
         </div>
         <div className={styles.form_input__container}>
           <input
-            className={styles.form_input}
+            className={errors.phone ? styles.input_error : styles.form_input}
             type="tel"
-            name="phone"
-            placeholder="Phone"
-            pattern="^[\+]{0,1}380([0-9]{9})$"
-            onChange={handleChange}
-            required
+            {...register('phone', {
+              required: 'This is required',
+              pattern: /^[+]{0,1}380([0-9]{9})$/,
+            })}
+            placeholder="Your phone"
           />
           <label>Phone</label>
-          <p className={styles.form_phone}>+38 (XXX) XXX - XX - XX</p>
+          <p className={styles.form_phone}>
+            {errors.phone ? (
+              <span className={styles.error}>+38 (XXX) XXX - XX - XX</span>
+            ) : (
+              '+38 (XXX) XXX - XX - XX'
+            )}
+          </p>
         </div>
 
-        <p className={styles.form_text}>Select your position</p>
+        <p className={styles.form_text}>
+          Select your position
+          <span className={styles.error}>{errors.position?.message}</span>
+        </p>
         {positions.map(({ id, name }) => (
           <label className={styles.lable_radio} key={id}>
             <input
               className={styles.input_radio}
-              id={id}
               type="radio"
-              name="position"
-              value={name}
-              onChange={handleChange}
-              required
+              {...register('position', {
+                required: 'This is required',
+              })}
+              value={id}
             />
             <span>{name}</span>
           </label>
@@ -133,18 +141,22 @@ function WorkingForm({ positions, onSubmit, loading }) {
             <input
               className={styles.field__file}
               type="file"
-              name="file"
-              accept=".jpg, .jpeg, .png"
-              value={file}
-              onChange={handleChange}
-              required
+              {...register('file', {
+                required: 'This is required',
+              })}
+              accept="image/*, image/jpeg, image/jpg"
             />
             <div className={styles.field__button}>Upload</div>
             <div className={styles.field__fake}>
-              {file ? file.slice(12) : 'Upload your photo'}
+              {file ? (
+                <span className={styles.span_file}>{file}</span>
+              ) : (
+                'Upload your photo'
+              )}
             </div>
           </label>
         </div>
+        <p className={styles.error}>{errors.file?.message}</p>
 
         {!loading ? (
           <button className={styles.button} type="submit" disabled={disable}>

@@ -1,6 +1,26 @@
 .container {
   width: 1170px;
   margin: 0 auto;
+
+  @media screen and (max-width: 359px) {
+    width: 100%;
+  }
+
+  @media screen and (min-width: 360px) {
+    width: 100%;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 100%;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 1024px;
+  }
+
+  @media screen and (min-width: 1170px) {
+    width: 1170px;
+  }
 }
 
 .container_success {

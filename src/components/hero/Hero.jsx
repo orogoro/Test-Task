@@ -6,6 +6,7 @@ function Hero() {
   const scrollToForm = () => {
     scroll.scrollToBottom();
   };
+
   return (
     <div className={styles.hero}>
       <div className={styles.hero_container}>

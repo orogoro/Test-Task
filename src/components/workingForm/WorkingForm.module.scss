@@ -5,6 +5,10 @@
     text-align: center;
     align-items: center;
     margin: 140px 0 10px;
+
+    @media screen and(max-width: 360px) {
+      padding: 0 16px;
+    }
   }
 
   &_title {
@@ -26,6 +30,9 @@
     flex-direction: column;
     align-items: flex-start;
     position: relative;
+    @media screen and(max-width: 500px) {
+      width: 328px;
+    }
 
     & + & {
       margin-top: 50px;
@@ -51,11 +58,11 @@
       }
     }
 
-    & + label {
-      display: none;
+    @media screen and(max-width: 500px) {
+      width: 90%;
     }
 
-    &:focus + label {
+    & + label {
       display: block;
       position: absolute;
       font-weight: 500;
@@ -68,12 +75,6 @@
       padding: 0 4px;
       margin-left: 12px;
     }
-    // &:invalid {
-    //   border-color: #cb3d40;
-    // }
-    // &:invalid + label {
-    //   color: #cb3d40;
-    // }
   }
 
   &_phone {
@@ -96,6 +97,48 @@
     font-size: 16px;
     line-height: 26px;
     color: rgba(0, 0, 0, 0.87);
+  }
+}
+
+.error {
+  color: #cb3d40;
+}
+
+.input_error {
+  width: 380px;
+  padding: 14px 16px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+
+  background-color: transparent;
+  border: 1px solid #cb3d40;
+  border-radius: 4px;
+
+  &:focus {
+    outline: none;
+
+    &::placeholder {
+      color: transparent;
+    }
+  }
+
+  @media screen and(max-width: 500px) {
+    width: 90%;
+  }
+
+  & + label {
+    display: block;
+    position: absolute;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    top: -7px;
+    left: 0;
+    color: #cb3d40;
+    background-color: #f8f8f8;
+    padding: 0 4px;
+    margin-left: 12px;
   }
 }
 
@@ -216,6 +259,10 @@
   border-radius: 0 4px 4px 0;
   border-left: none;
   cursor: pointer;
+}
+
+.span_file {
+  color: rgba(0, 0, 0, 0.87);
 }
 
 .field__button {

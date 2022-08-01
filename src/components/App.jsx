@@ -54,7 +54,6 @@ export const App = () => {
     postWorkies(dataForm, config)
       .then(response => {
         setSuccess(response.success);
-        console.log(response);
       })
       .catch(error => {
         console.log(error);
