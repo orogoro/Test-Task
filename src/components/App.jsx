@@ -84,7 +84,7 @@ export const App = () => {
         ) : (
           <div className={styles.container_success}>
             <h2 className={styles.title}>User successfully registered</h2>
-            <img src={successImg} alt="successImg" />
+            <img className={styles.img} src={successImg} alt="successImg" />
           </div>
         )}
       </main>

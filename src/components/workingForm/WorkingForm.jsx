@@ -27,6 +27,8 @@ function WorkingForm({ positions, onSubmit, loading }) {
   const phone = watch('phone');
   const position = watch('position');
 
+  const resultFile = file?.length > 30 ? file.slice(0, 30) + '...' : file;
+
   const handleSubmitForm = data => {
     getToken().then(response => {
       const config = { headers: { Token: response } };
@@ -149,7 +151,7 @@ function WorkingForm({ positions, onSubmit, loading }) {
             <div className={styles.field__button}>Upload</div>
             <div className={styles.field__fake}>
               {file ? (
-                <span className={styles.span_file}>{file}</span>
+                <span className={styles.span_file}>{resultFile}</span>
               ) : (
                 'Upload your photo'
               )}

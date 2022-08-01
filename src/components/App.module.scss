@@ -29,6 +29,11 @@
   align-items: center;
   margin-top: 140px;
   margin-bottom: 100px;
+
+  @media screen and (max-width: 500px) {
+    text-align: center;
+    padding: 0 15px;
+  }
 }
 
 .title {
@@ -37,4 +42,10 @@
   line-height: 40px;
   color: rgba(0, 0, 0, 0.87);
   margin-bottom: 50px;
+}
+
+.img {
+  @media screen and (max-width: 500px) {
+    width: 300px;
+  }
 }
